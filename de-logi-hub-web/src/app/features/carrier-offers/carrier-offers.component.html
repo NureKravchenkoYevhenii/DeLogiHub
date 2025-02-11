@@ -1,0 +1,37 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Мої пропозиції</h2>
+
+    <div *ngIf="loading" class="text-center">
+        <p>Завантаження...</p>
+    </div>
+
+    <div *ngIf="!loading && offers.length === 0" class="text-center">
+        <p>У вас немає пропозицій</p>
+    </div>
+
+    <div *ngIf="!loading && offers.length > 0">
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>ID Замовлення</th>
+                    <th>Статус</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let offer of offers; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ offer.id }}</td>
+                    <td>{{ offer.orderId }}</td>
+                    <td>{{ getOfferStatusDisplayValue(offer.status) }}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" (click)="deleteOffer(offer.id)"
+                            [disabled]="offer.status !== 'Pending'">Видалити</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

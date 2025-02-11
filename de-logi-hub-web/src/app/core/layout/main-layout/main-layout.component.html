@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+	<a class="navbar-brand" href="#">DeLogiHub</a>
+	<button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" aria-controls="navbarNav"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div [ngbCollapse]="isCollapsed" class="navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+			<!-- <li *ngIf="isOrganizer()" class="nav-item">
+				<a class="nav-link" routerLink="/organization">Організація</a>
+			</li> -->
+		</ul>
+		<ul class="navbar-nav ml-auto w-100">
+			<div class="nav-buttons-left">
+				<!-- <li *ngIf="isLoggedIn()" (click)="logout()" class="nav-item logout-button">
+					<a class="nav-link">Вийти</a>
+				</li>
+				<li *ngIf="!isLoggedIn()" class="nav-item">
+					<a class="nav-link" routerLink="/login">Увійти</a>
+				</li>
+				<li *ngIf="!isLoggedIn()" class="nav-item">
+					<a class="nav-link" routerLink="/register">Реєстрація</a>
+				</li> -->
+			</div>
+
+		</ul>
+	</div>
+</nav>
+
+<div class="container mt-3">
+	<router-outlet></router-outlet>
+</div>

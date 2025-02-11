@@ -1,0 +1,51 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Список замовлень</h2>
+
+    <div *ngIf="userRole === 'Customer'" class="d-flex justify-content-end mb-3">
+        <button class="btn btn-primary" (click)="openOrderModal()">Додати замовлення</button>
+    </div>
+
+    <div *ngIf="loading" class="text-center">
+        <p>Завантаження...</p>
+    </div>
+
+    <div *ngIf="!loading">
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>Клієнт</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Для перевізників: Тільки перегляд деталей -->
+                <ng-container *ngIf="userRole !== 'Customer'">
+                    <tr *ngFor="let order of orders; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.customerId }}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm" (click)="viewOrder(order.id)">Деталі</button>
+                        </td>
+                    </tr>
+                </ng-container>
+
+                <!-- Для замовників: Додавання, редагування та видалення -->
+                <ng-container *ngIf="userRole === 'Customer'">
+                    <tr *ngFor="let order of userOrders; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ order.id }}</td>
+                        <td>Ви</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm me-2"
+                                (click)="openOrderModal(order.id)">Редагувати</button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteOrder(order.id)">Видалити</button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

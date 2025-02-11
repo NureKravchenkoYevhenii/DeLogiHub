@@ -1,0 +1,100 @@
+<div class="container d-flex justify-content-center align-items-center">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="registration-form p-4 bg-white rounded shadow">
+        <h3 class="text-center mb-4">Реєстрація</h3>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3 field-container">
+                    <label for="login" class="form-label">Логін <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="login" id="login" class="form-control"
+                        placeholder="Введіть логін" [class.is-invalid]="f['login'].touched && f['login'].invalid">
+                    <small *ngIf="f['login'].touched && f['login'].invalid" class="text-danger">
+                        Мінімум 3 символи
+                    </small>
+                </div>
+
+                <div class="mb-3 field-container">
+                    <label for="password" class="form-label">Пароль <span class="text-danger">*</span></label>
+                    <input type="password" formControlName="password" id="password" class="form-control"
+                        placeholder="Введіть пароль"
+                        [class.is-invalid]="f['password'].touched && f['password'].invalid">
+                    <small *ngIf="f['password'].touched && f['password'].invalid" class="text-danger">
+                        Мінімум 6 символів
+                    </small>
+                </div>
+
+                <div class="mb-3 field-container">
+                    <label for="firstName" class="form-label">Ім'я <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="firstName" id="firstName" class="form-control"
+                        placeholder="Введіть ім'я"
+                        [class.is-invalid]="f['firstName'].touched && f['firstName'].invalid">
+                    <small *ngIf="f['firstName'].touched && f['firstName'].invalid" class="text-danger">
+                        Введіть ім'я
+                    </small>
+                </div>
+
+                <div class="mb-3 field-container">
+                    <label for="lastName" class="form-label">Прізвище <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="lastName" id="lastName" class="form-control"
+                        placeholder="Введіть прізвище"
+                        [class.is-invalid]="f['lastName'].touched && f['lastName'].invalid">
+                    <small *ngIf="f['lastName'].touched && f['lastName'].invalid" class="text-danger">
+                        Введіть прізвище
+                    </small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="mb-3 field-container">
+                    <label for="email" class="form-label">Електронна пошта <span class="text-danger">*</span></label>
+                    <input type="email" formControlName="email" id="email" class="form-control"
+                        placeholder="Введіть email" [class.is-invalid]="f['email'].touched && f['email'].invalid">
+                    <small *ngIf="f['email'].touched && f['email'].invalid" class="text-danger">
+                        Невірний формат email
+                    </small>
+                </div>
+
+                <div class="mb-3 field-container">
+                    <label for="phoneNumber" class="form-label">Телефон <span class="text-danger">*</span></label>
+                    <input type="text" formControlName="phoneNumber" id="phoneNumber" class="form-control"
+                        placeholder="+380XXXXXXXXX"
+                        [class.is-invalid]="f['phoneNumber'].touched && f['phoneNumber'].invalid">
+                    <small *ngIf="f['phoneNumber'].touched && f['phoneNumber'].invalid" class="text-danger">
+                        Введіть коректний номер телефону
+                    </small>
+                </div>
+
+                <div class="mb-3 field-container">
+                    <label for="birthDate" class="form-label">Дата народження <span class="text-danger">*</span></label>
+                    <input type="date" formControlName="birthDate" id="birthDate" class="form-control"
+                        [class.is-invalid]="f['birthDate'].touched && f['birthDate'].invalid">
+                    <small *ngIf="f['birthDate'].touched && f['birthDate'].invalid" class="text-danger">
+                        Введіть дату народження
+                    </small>
+                </div>
+
+                <div class="mb-3 field-container">
+                    <label for="role" class="form-label">Оберіть ким ви є <span class="text-danger">*</span></label>
+                    <select formControlName="role" id="role" class="form-select">
+                        <option value="Customer">Замовник</option>
+                        <option value="Carrier">Перевізник</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Поле для адреси -->
+        <div class="mb-3 field-container">
+            <label for="address" class="form-label">Адреса <span class="text-danger">*</span></label>
+            <input type="text" formControlName="address" id="address" class="form-control" placeholder="Введіть адресу"
+                [class.is-invalid]="f['address'].touched && f['address'].invalid">
+            <small *ngIf="f['address'].touched && f['address'].invalid" class="text-danger">
+                Введіть адресу
+            </small>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="registerForm.invalid || loading">
+            Реєстрація
+        </button>
+    </form>
+</div>

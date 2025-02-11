@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Список транспортних засобів</h2>
+
+    <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-primary" (click)="openTransportModal()">Додати транспорт</button>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>Тип</th>
+                <th>Номерний знак</th>
+                <th>Вантажопідйомність (т)</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transport of transports; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ getTransportTypeDisplayValue(transport.type) }}</td>
+                <td>{{ transport.licensePlate }}</td>
+                <td>{{ transport.capacity }}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm me-2" (click)="openTransportModal(transport.id)">Редагувати</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteTransport(transport.id)">Видалити</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

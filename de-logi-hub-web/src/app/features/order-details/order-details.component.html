@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h5 class="modal-title">Деталі замовлення</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="dismiss()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="orderForm" inert>
+        <div class="mb-3">
+            <label for="orderDetails" class="form-label">Деталі замовлення</label>
+            <textarea id="orderDetails" formControlName="details" class="form-control"></textarea>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="makeOffer()" [disabled]="loading">Подати заявку</button>
+    <button type="button" class="btn btn-secondary" (click)="dismiss()">Закрити</button>
+</div>

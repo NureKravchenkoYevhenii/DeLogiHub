@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Профіль користувача</h2>
+
+    <div class="card mx-auto p-4 shadow" style="max-width: 600px;">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">Ім'я <span class="text-danger">*</span></label>
+                <input type="text" id="firstName" formControlName="firstName" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Прізвище <span class="text-danger">*</span></label>
+                <input type="text" id="lastName" formControlName="lastName" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                <input type="email" id="email" formControlName="email" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Телефон <span class="text-danger">*</span></label>
+                <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control"
+                    placeholder="+380XXXXXXXXX">
+            </div>
+
+            <div class="mb-3">
+                <label for="birthDate" class="form-label">Дата народження</label>
+                <input type="date" id="birthDate" formControlName="birthDate" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">Адреса</label>
+                <input type="text" id="address" formControlName="address" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="profileForm.invalid || loading">
+                Оновити профіль
+            </button>
+        </form>
+    </div>
+</div>

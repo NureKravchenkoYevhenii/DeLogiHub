@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ isEdit ? 'Редагування ' : 'Додавання ' }}транспорту</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="transportForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="type" class="form-label">Тип транспорту <span class="text-danger">*</span></label>
+            <select id="type" formControlName="type" class="form-select">
+                <option *ngFor="let type of transportTypes" [value]="type.value">{{ type.displayValue }}</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="licensePlate" class="form-label">Номерний знак <span class="text-danger">*</span></label>
+            <input type="text" id="licensePlate" formControlName="licensePlate" class="form-control"
+                placeholder="Введіть номерний знак">
+        </div>
+
+        <div class="mb-3">
+            <label for="capacity" class="form-label">Вантажопідйомність (т) <span class="text-danger">*</span></label>
+            <input type="number" id="capacity" formControlName="capacity" class="form-control"
+                placeholder="Введіть вантажопідйомність" step=".1">
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" [disabled]="transportForm.invalid || loading">
+                Зберегти
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Скасувати</button>
+        </div>
+    </form>
+</div>
